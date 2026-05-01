@@ -1,0 +1,20 @@
+name: Cron Trigger
+
+on:
+  schedule:
+    - cron: '0 17 15 * *'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: 定时自动触发构建"
+          git push
