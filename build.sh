@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 CALVER=$(date -d "@$(($(date +%s) + 8 * 3600))" "+%Y.%-m.%-d")
 
 docker buildx build \
